@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Áreas</title>
+    
+    <!-- AQUI ESTÃO AS SUAS CORES NOVAS -->
+    <style>
+        :root {
+            --cor-principal: #B39DDB; /* Lavanda claro */
+            --cor-destaque: #250d30;  /* Roxo escuro */
+            --cor-borda: #CCCCFE;     /* Azul-lavanda */
+            --cor-hover: #250d30;     /* Roxo escuro */
+            --cor-fundo: #F0F2F5;     /* Fundo da página */
+            --cor-texto: #243447;     /* Cinza escuro */
+            --cor-card: #ffc1ff;      /* Rosa claro */
+            --cor-texto-claro: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+            background-color: var(--cor-fundo); 
+            color: var(--cor-texto); 
+            text-align: center; 
+        }
+        header { background-color: var(--cor-principal); padding: 20px; }
+        header h1 { 
+            background-color: var(--cor-hover); 
+            color: var(--cor-texto-claro); 
+            padding: 15px; 
+            margin: 0 auto; 
+            border-radius: 8px; 
+            max-width: 800px;
+        }
+        main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 30px 15px; }
+        .card { 
+            background-color: var(--cor-card); 
+            color: var(--cor-texto); 
+            width: 100%; 
+            max-width: 450px; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); 
+            text-align: center; 
+        }
+        .card h2 { color: var(--cor-destaque); margin-bottom: 20px; }
+        .card label { display: block; margin-bottom: 8px; font-weight: bold; text-align: left; }
+        
+        /* Aqui está o select e o input que tinham no seu CSS */
+        .card input, select { 
+            display: block; 
+            width: 100%; 
+            padding: 12px; 
+            border: 2px solid var(--cor-borda); 
+            border-radius: 8px; 
+            font-size: 16px; 
+            margin-bottom: 15px; 
+            text-align: center; 
+        }
+        .card button { 
+            background-color: var(--cor-principal); 
+            color: var(--cor-texto-claro); 
+            padding: 12px 30px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            cursor: pointer; 
+            width: 100%;
+            font-weight: bold;
+        }
+        .card button:hover { background-color: var(--cor-hover); }
+        #resultado { color: var(--cor-destaque); font-size: 20px; font-weight: bold; margin-top: 15px; }
+        footer { background-color: var(--cor-principal); color: var(--cor-texto-claro); padding: 15px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Atividade 3 - Cálculo</h1>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Calcule a Área</h2>
+            
+            <!-- O select que estava no seu CSS -->
+            <label>Escolha a forma:</label>
+            <select>
+                <option>Retângulo</option>
+            </select>
+
+            <label>Base (metros):</label>
+            <input type="number" id="base" placeholder="Ex.: 6">
+
+            <label>Altura (metros):</label>
+            <input type="number" id="altura" placeholder="Ex.: 2">
+
+            <button onclick="calcularAreaRetangulo()">Calcular</button>
+
+            <p id="resultado"></p>
+        </div>
+    </main>
+
+    <!-- NÃO MUDEI O SEU CÓDIGO ORIGINAL AQUI EMBAIXO -->
+    <footer>
+        <p>Desenvolvido por Rafaela</p>
+    </footer>
+
+    <script>
+        function calcularAreaRetangulo() {
+            // Lê os valores digitados
+            let base = Number(document.getElementById("base").value); 
+            let altura = Number(document.getElementById("altura").value);
+
+            // Confere se os valores são válidos
+            if (base <= 0 || altura <= 0) {
+                document.getElementById("resultado").textContent =
+                    "Digite uma base e uma altura válidas!";
+                    document.getElementById("base").value="";
+                    document.getElementById("altura").value="";
+                return;
+            }
+
+            // Cálculo da área
+            let area = base * altura;
+
+            // Mostra o resultado com duas casas decimais
+            document.getElementById("resultado").textContent =
+                "A área do retângulo é " + area.toFixed(2); 
+        }
+    </script>
+
+</body>
+</html>
